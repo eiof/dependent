@@ -20,9 +20,9 @@ io.on('connection', function (socket) {
     console.log(new Date() + ' Event: new player ' + socket.id);
 
     // Relay current players to new player
-    _.each(players, function (player) {
-      socket.emit('player joined group', player);
-    });
+    // _.each(players, function (player) {
+    //   socket.emit('player joined group', player);
+    // });
 
     // Record new player
     var player = {
@@ -32,7 +32,7 @@ io.on('connection', function (socket) {
     players.push(player);
 
     // Relay new player to current players
-    io.emit('player joined group', player);
+    // io.emit('player joined group', player);
   });
 
   socket.on('disconnect', function () {
@@ -45,6 +45,6 @@ io.on('connection', function (socket) {
     // Remove from recorded players and inform current players of removal
     var player = _.findWhere(players, { id: socket.id });
     players = _.without(players, player);
-    io.emit('player left group', player);
+    // io.emit('player left group', player);
   });
 });

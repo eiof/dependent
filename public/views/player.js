@@ -6,15 +6,17 @@ define(function (require) {
   var Backbone = require('backbone');
   var _ = require('underscore');
 
+  var progressTicker = null;
+
   var PlayerView = Backbone.View.extend({
 
     initialize: function (options) {
       this.model = options.model;
-      this.listenTo(this.model, 'change', this.stream, this);
+      this.listenTo(this.model, 'change', this.streamDependentAttributes, this);
       this.render();
     },
 
-    stream: function () {
+    streamDependentAttributes: function () {
       var values = this.model.toJSON();
       _.each(values, function (value, key) {
         var $valueEl = this.$('.' + key);

@@ -35,6 +35,8 @@ define(function (require) {
         });
         window.socket.emit('new player', { player: _self.toJSON() });
       });
+
+
     },
 
     randomlyGenerateStartingMentality: function () {
@@ -73,6 +75,26 @@ define(function (require) {
       var minValue = balance[subset][attribute].startMin;
       var maxValue = balance[subset][attribute].startMax;
       return Math.floor((Math.random() * (maxValue - minValue)) + minValue);
+    },
+
+    weighOptions: function (conclusion, context) {
+      var confidenceImpedence = ((balance.mentality.confidence.max - this.get('confidence')) * 5) / 100;
+      var weighOptions = setTimeout(function () {
+        conclusion(context);
+      }, (confidenceImpedence * 1000));
+      return weighOptions;
+    },
+
+    deteriorateAttributes: function () {
+      var deteriorationMin = 2;
+      var deteriorationMax = 12;
+
+      var attributes = ['confidence', 'hope', 'sanity', 'satiation', 'hydration', 'vigor'];
+      _.each(attributes, function (attribute) {
+        var currentValue = this.get(attribute);
+        var deteriorateBy = Math.floor((Math.random() * (deteriorationMax - deteriorationMin)) + deteriorationMin);
+        this.set(attribute, (currentValue - deteriorateBy));
+      }, this);
     }
 
   });
