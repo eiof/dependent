@@ -1,0 +1,17 @@
+{
+  "name": "dependent_proto",
+  "version": "0.0.1",
+  "description": "Prototyped game idea for Dependent.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "elliottisonfire",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.0.0-alpha.1",
+    "http": "0.0.0",
+    "socket.io": "^1.2.1",
+    "underscore": "^1.7.0"
+  }
+}

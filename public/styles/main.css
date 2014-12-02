@@ -1,0 +1,8 @@
+* {
+  font-family: monospace;
+}
+
+.main-container {
+  width: 400px;
+  margin: 0 auto;
+}

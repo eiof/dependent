@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js">
+
+  <body>
+    <section class="main-container">
+      <article class="dependent">
+        <h1>dependent</h1>
+        <table class="player-view">
+          <tr class="player-data name">
+            <td class="label">name: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data gender">
+            <td class="label">gender: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data confidence">
+            <td class="label">confidence: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data hope">
+            <td class="label">hope: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data sanity">
+            <td class="label">sanity: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data satiation">
+            <td class="label">satiation: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data thirst">
+            <td class="label">thirst: </td>
+            <td class="value"></td>
+          </tr>
+          <tr class="player-data vigor">
+            <td class="label">vigor: </td>
+            <td class="value"></td>
+          </tr>
+        </table>
+      </article>
+
+      <article class="group">
+        <h1>group</h1>
+        <ul class="group-list"></ul>
+      </article>
+
+      <article class="current-event">
+        <h1>current event</h1>
+        <span class="event">group discussion</span>
+      </article>
+
+      <article class="action">
+        <h1>action</h1>
+        <span>weighing options...</span>
+      </article>
+
+    </section>
+  </body>
+
+  <link rel="stylesheet" href="./styles/main.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script data-main="./config" src="/bower_components/requirejs/require.js"></script>
+  <script>
+    require(['main']);
+  </script>
+</html>
