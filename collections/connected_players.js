@@ -3,7 +3,7 @@
 
 var Backbone = require('backbone');
 
-var ConnectedPlayer = require('./models/connected_player');
+var ConnectedPlayer = require('../models/player_group');
 
 var ConnectedPlayers = Backbone.Collection.extend({
   model: ConnectedPlayer
