@@ -18,7 +18,7 @@ define(function (require) {
 
   var ActionView = Backbone.View.extend({
     events: {
-      'click button.move-onward': 'streamActionEvaluation'
+      'click button.move-onward': 'processAction'
     },
 
     initialize: function (options) {
@@ -26,7 +26,12 @@ define(function (require) {
       this.render();
     },
 
-    streamActionEvaluation: function (e) {
+    processAction: function () {
+      window.socket.emit('chance for encounter');
+      window.socket.on('no encounter', this.streamActionEvaluation());
+    },
+
+    streamActionEvaluation: function () {
       this.model.deteriorateAttributes();
       this.$('.action-message').html(_.sample(moveOnwardPlaceholder));
       this.$('.action-options').html('weighing options');

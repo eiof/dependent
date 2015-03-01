@@ -9,8 +9,8 @@
       },
       backbone: {
         deps: [
-        'underscore',
-        'jquery'
+          'underscore',
+          'jquery'
         ],
         exports: 'Backbone'
       }

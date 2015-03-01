@@ -6,7 +6,7 @@ define(function (require) {
   var Backbone = require('backbone');
   var _ = require('underscore');
 
-  var Player = require('../models/player');
+  var Player = require('../../models/player');
   var PlayerView = require('./player');
   var ActionView = require('./action');
 

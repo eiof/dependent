@@ -36,7 +36,6 @@ define(function (require) {
         window.socket.emit('new player', { player: _self.toJSON() });
       });
 
-
     },
 
     randomlyGenerateStartingMentality: function () {
@@ -78,7 +77,7 @@ define(function (require) {
     },
 
     weighOptions: function (conclusion, context) {
-      var confidenceImpedence = ((balance.mentality.confidence.max - this.get('confidence')) * 5) / 100;
+      var confidenceImpedence = ((balance.mentality.confidence.max - this.get('confidence')) * 2) / 100;
       var weighOptions = setTimeout(function () {
         conclusion(context);
       }, (confidenceImpedence * 1000));
