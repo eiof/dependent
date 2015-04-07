@@ -3,10 +3,13 @@
 
 var Backbone = require('backbone');
 
-var PlayerGroup = Backbone.Model.extend({
-  addConnectedPlayer: function (connetedPlayer) {
+// var PlayerGroupPlayers = require('../collections/player_group_players');
 
-  }
+var PlayerGroup = Backbone.Model.extend({
+  defaults: {
+    groupPlayers: []
+  },
+  urlRoot: '/'
 });
 
 module.exports = PlayerGroup;
