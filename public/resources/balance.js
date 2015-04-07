@@ -3,7 +3,7 @@ define(function (require) {
   var balance = {
     ablities: {
       carryWeight: {
-        min: 26,
+        min: 25,
         max: 75,
         multiplier: 0.2 // Mutliplied against vigor
       }
