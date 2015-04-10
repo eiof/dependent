@@ -94,7 +94,33 @@ define(function (require) {
         var deteriorateBy = Math.floor((Math.random() * (deteriorationMax - deteriorationMin)) + deteriorationMin);
         this.set(attribute, (currentValue - deteriorateBy));
       }, this);
+    },
+
+    //Code will determine if choice by player will be followed or an alternate choice made.
+    decisions: function (mentality, physicality){
+      if (mentality < 60 && physicality < 60){
+        return  false;
+      } else if((mentality < 60 && physicality > 60) || (mentaility > 60 && physicality < 60)){
+        var x = Math.random();
+        if ( x >= 0.50){
+          return true;
+        } else {
+          return false;
+        }
+      }
+    },
+    //Code returns random choice option that character will take
+    randomChoice: function(){
+      var x = Math.random();
+      if (x <= 0.33){
+        return 'fight';
+      } else if (x > 0.33 && x <= 0.66) {
+        return 'walk';
+      } else if (x > 0.66){
+        return 'join';
+      }
     }
+
 
   });
 
