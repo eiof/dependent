@@ -2,16 +2,20 @@
 'use strict';
 
 var Backbone = require('backbone');
+var PlayerGroups = require('../collections/player_groups');
 
 var Player = Backbone.Model.extend({
   urlRoot: '/',
-  defaults: {
-    groupPlayers: []
-  },
 
   initialize: function () {
-    this.get('groupPlayers').push(this);
+    this.set('group', PlayerGroups.create({
+      groupPlayers: [this]
+    }));
   }
+
+
+ }
+
 });
 
 module.exports = Player;
