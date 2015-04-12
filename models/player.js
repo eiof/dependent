@@ -3,6 +3,7 @@
 
 var _ = require('underscore');
 var Backbone = require('backbone');
+var PlayerGroups = require('../collections/player_groups');
 
 var Player = Backbone.Model.extend({
   urlRoot: '/',
@@ -17,6 +18,7 @@ var Player = Backbone.Model.extend({
     var demographics = ['name', 'tag'];
     return _.pick(this.attributes, demographics);
   }
+
 });
 
 module.exports = Player;
