@@ -3,7 +3,6 @@
 
 var _ = require('underscore');
 var Backbone = require('backbone');
-var PlayerGroups = require('../collections/player_groups');
 
 var Player = Backbone.Model.extend({
   urlRoot: '/',
