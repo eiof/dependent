@@ -109,6 +109,7 @@ define(function (require) {
         }
       }
     },
+    
     //Code returns random choice option that character will take
     randomChoice: function(){
       var x = Math.random();
@@ -119,6 +120,26 @@ define(function (require) {
       } else if (x > 0.66){
         return 'join';
       }
+    },
+
+    //Code returns which encounter will take place
+    randomEncounter: function(stats){
+      var x = Math.random();
+      if(stats < 500 && stats > 300){
+        x = x + 0.02;
+      } else if(stats <= 300 && stats > 100) {
+        x = x + 0.06;
+      } else if(stats <= 100){
+        x = x + 0.1;
+      }
+      if(x <= 0.33){
+        return 'player';
+      } else if (x <= 0.66){
+        return'zombie';
+      } else {
+        return 'self';
+      }
+
     }
 
 
