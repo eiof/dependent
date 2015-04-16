@@ -33,7 +33,7 @@ define(function (require) {
           'name': name,
           'gender': gender
         });
-        window.socket.emit('new player', { player: _self.toJSON() });
+        window.socket.emit('player join', { player: _self.toJSON() });
       });
 
     },
@@ -109,7 +109,7 @@ define(function (require) {
         }
       }
     },
-    
+
     //Code returns random choice option that character will take
     randomChoice: function(){
       var x = Math.random();
