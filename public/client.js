@@ -10,6 +10,16 @@ define(function (require) {
       el: $('.client')
     });
 
+  
+    window.socket.on('play again', function(){
+      var ClientView = require('./views/client');
+
+      var clientView = new ClientView({
+        el: $('.client')
+      });
+    });
+
+
     window.socket.on('player joined group', function (otherPlayer) {
       console.log(otherPlayer);
       $('ul.group-list').append('<li id="player-' + otherPlayer.tag + '">' + otherPlayer.name  + '</li>');
@@ -20,3 +30,4 @@ define(function (require) {
     });
   });
 });
+/* This is the file where we will start a new game/rest game on death */

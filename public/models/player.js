@@ -139,10 +139,12 @@ define(function (require) {
       } else {
         return 'self';
       }
+    },
 
+    death: function(){
+      var message = "You have died.";
+      return message;
     }
-
-
   });
 
   return Player;

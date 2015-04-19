@@ -16,9 +16,12 @@ define(function (require) {
     '> there is nowhere to go but forward &mdash; there is nowhere to go but forward &mdash; when are the devs going to make somewhere else to go'
   ];
 
+  var deathPlaceHolder = '> You have died';
+
   var ActionView = Backbone.View.extend({
     events: {
-      'click button.move-onward': 'processAction'
+      'click button.move-onward': 'processAction',
+      'click button.play-again': 'playAgain'
     },
 
     initialize: function (options) {
@@ -26,7 +29,16 @@ define(function (require) {
       this.render();
     },
 
-    processAction: function () {
+    playAgain: function(){
+      window.socket.emit('play again');
+      window.socket.on('');
+    },
+    
+    playerDead: function(){
+      window.socket.emit('player dead');
+    },
+
+    processAction: function (){
       window.socket.emit('chance for encounter');
       window.socket.on('no encounter', this.streamActionEvaluation());
     },
@@ -55,8 +67,11 @@ define(function (require) {
 
     render: function () {
       this.$('.action-options').html('<button class="move-onward">move onward</button>');
-    }
+    },
 
+    renderPlayAgain: function(){
+      this.$('.action-options').html('<button class="play-again">play again</button>');
+    }
   });
 
   return ActionView;
