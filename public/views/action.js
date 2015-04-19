@@ -26,16 +26,17 @@ define(function (require) {
 
     initialize: function (options) {
       this.model = options.model;
-      this.render();
+      this.renderOptions(1);
     },
 
     playAgain: function(){
       window.socket.emit('play again');
-      window.socket.on('');
+      consol.log("Emiting play again signal");
     },
-    
+
     playerDead: function(){
       window.socket.emit('player dead');
+      consol.log("Emiting player dead");
     },
 
     processAction: function (){
@@ -61,11 +62,27 @@ define(function (require) {
 
     moveOnward: function (context) {
       clearTimeout(progressTicker);
+      var deathCounter = 0;
+      deathCounter+= 1;
+      if(deathCaounter === 3){
+        playerDead();
+        context.renderOptions(2);
+      }
+      else {
       context.$('.action-message').append('<br>> there is nowhere to go but forward');
-      context.render();
+      context.renderOptions(1);
+      }
     },
 
-    render: function () {
+    renderOptions: function(x){
+      if(x == 1){
+        renderChoices();
+      } else if (x == 2) {
+        renderPlayAgain();
+      }
+    },
+
+    renderChoices: function () {
       this.$('.action-options').html('<button class="move-onward">move onward</button>');
     },
 

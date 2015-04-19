@@ -10,11 +10,10 @@ define(function (require) {
       el: $('.client')
     });
 
-  
-    window.socket.on('play again', function(){
-      var ClientView = require('./views/client');
 
-      var clientView = new ClientView({
+    window.socket.on('play again', function(){
+
+    clientView = new ClientView({
         el: $('.client')
       });
     });
