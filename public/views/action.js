@@ -39,6 +39,7 @@ define(function (require) {
 
     playerDead: function(){
       window.socket.emit('player dead');
+      window.socket.on('player release', this.renderOptions(false));
       console.log("Emiting player dead");
     },
 
@@ -75,7 +76,7 @@ define(function (require) {
       else if (deathCounter >= 3){
         console.log('Death has run');
         context.playerDead();
-        context.renderOptions(false);
+        //context.renderOptions(false);
         //context.renderPlayAgain();
       }
     },
