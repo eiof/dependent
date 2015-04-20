@@ -40,7 +40,7 @@ define(function (require) {
     },
 
     processAction: function (){
-      window.socket.emit('chance for encounter');
+      window.socket.emit('player encounter chance');
       window.socket.on('no encounter', this.streamActionEvaluation());
     },
 
