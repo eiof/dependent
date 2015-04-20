@@ -18,6 +18,8 @@ define(function (require) {
 
   var deathPlaceHolder = '> You have died';
 
+  var deathCounter = 0;
+
   var ActionView = Backbone.View.extend({
     events: {
       'click button.move-onward': 'processAction',
@@ -26,17 +28,18 @@ define(function (require) {
 
     initialize: function (options) {
       this.model = options.model;
-      this.renderOptions(1);
+      this.renderOptions(true);
+      //this.render();
     },
 
     playAgain: function(){
       window.socket.emit('play again');
-      consol.log("Emiting play again signal");
+      console.log("Emiting play again signal");
     },
 
     playerDead: function(){
       window.socket.emit('player dead');
-      consol.log("Emiting player dead");
+      console.log("Emiting player dead");
     },
 
     processAction: function (){
@@ -62,27 +65,30 @@ define(function (require) {
 
     moveOnward: function (context) {
       clearTimeout(progressTicker);
-      var deathCounter = 0;
       deathCounter+= 1;
-      if(deathCaounter === 3){
-        playerDead();
-        context.renderOptions(2);
+      if(deathCounter < 3){
+        console.log('Death will come');
+        context.$('.action-message').append('<br>> there is nowhere to go but forward');
+        context.renderOptions(true);
+        //context.render();
       }
-      else {
-      context.$('.action-message').append('<br>> there is nowhere to go but forward');
-      context.renderOptions(1);
+      else if (deathCounter >= 3){
+        console.log('Death has run');
+        context.playerDead();
+        context.renderOptions(false);
+        //context.renderPlayAgain();
       }
     },
 
     renderOptions: function(x){
-      if(x == 1){
-        renderChoices();
-      } else if (x == 2) {
-        renderPlayAgain();
+      if(x === true){
+        this.render();
+      } else if (x === false) {
+        this.renderPlayAgain();
       }
     },
 
-    renderChoices: function () {
+    render: function () {
       this.$('.action-options').html('<button class="move-onward">move onward</button>');
     },
 
