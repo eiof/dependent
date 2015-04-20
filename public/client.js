@@ -11,8 +11,7 @@ define(function (require) {
     });
 
 
-    window.socket.on('play again', function(){
-
+    window.socket.on('restart', function(){
     clientView = new ClientView({
         el: $('.client')
       });
