@@ -39,6 +39,7 @@ define(function (require) {
 
     playerDead: function(){
       window.socket.emit('player dead');
+      this.$('.action-message').html(deathPlaceHolder);
       window.socket.on('player release', this.renderOptions(false));
       console.log("Emiting player dead");
     },
