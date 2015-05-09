@@ -21,7 +21,11 @@ define(function (require) {
       _.each(values, function (value, key) {
         var $valueEl = this.$('.' + key);
         if ($valueEl.length > 0) {
-          $valueEl.find('.value').html(value);
+          if(isNaN(value)){
+            $valueEl.find('.value').html(value);
+          } else {
+            $valueEl.find('.value').html(parseInt((value/200) *100) + '%');
+          }
         }
       }, this);
     },
