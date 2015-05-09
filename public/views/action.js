@@ -46,6 +46,7 @@ define(function (require) {
 
     processAction: function (){
       window.socket.emit('player encounter chance');
+      window.socket.emit('player vulnerable', true);
       window.socket.on('no encounter', this.streamActionEvaluation());
     },
 
@@ -62,11 +63,12 @@ define(function (require) {
       var self = this;
       progressTicker = setTimeout(function () {
         self.streamActionEvaluationProgress();
-      }, 1000);
+      }, 10000);
     },
 
     moveOnward: function (context) {
       clearTimeout(progressTicker);
+      window.socket.emit('player vulnerable', false);
       deathCounter+= 1;
       if(deathCounter < 3){
         console.log('Death will come');
