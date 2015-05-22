@@ -18,13 +18,15 @@ define(function (require) {
 
     streamDependentAttributes: function () {
       var values = this.model.toJSON();
-      _.each(values, function (value, key) {
+      _.each(values, function (val, key) {
         var $valueEl = this.$('.' + key);
         if ($valueEl.length > 0) {
-          if(isNaN(value)){
-            $valueEl.find('.value').html(value);
+          if(isNaN(val)){
+            $valueEl.find('.value').html(val);
           } else {
-            $valueEl.find('.value').html(parseInt((value/200) *100) + '%');
+            $valueEl.find('.value').html(parseInt((val/200) *100) + '%');
+            $valueEl.find('.pBar').attr('max', '200');
+            $valueEl.find('.pBar').attr('value', val);
           }
         }
       }, this);
