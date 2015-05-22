@@ -1,8 +1,14 @@
 * {
-  font-family: monospace;
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  background-color: #FFFAF0;
 }
 
 .main-container {
-  width: 400px;
+  width: 667px;
   margin: 0 auto;
+}
+
+.message-tick {
+  color: #696969;
 }

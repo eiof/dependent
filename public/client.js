@@ -24,6 +24,7 @@ define(function (require) {
     });
 
     window.socket.on('player left party', function (otherPlayer) {
+      console.log(otherPlayer);
       $('ul.group-list > #player-' + otherPlayer.tag + '').remove();
     });
   });

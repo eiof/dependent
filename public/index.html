@@ -3,44 +3,41 @@
 
   <body>
     <section class="main-container client">
-      <hr>
-      <article class="dependent">
-        <h1>dependent</h1>
-        <table class="player-view">
-          <tr class="player-data name">
-            <td class="label">name: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data gender">
-            <td class="label">gender: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data confidence">
-            <td class="label">confidence: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data hope">
-            <td class="label">hope: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data sanity">
-            <td class="label">sanity: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data satiation">
-            <td class="label">satiation: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data hydration">
-            <td class="label">hydration: </td>
-            <td class="value"></td>
-          </tr>
-          <tr class="player-data vigor">
-            <td class="label">vigor: </td>
-            <td class="value"></td>
-          </tr>
-        </table>
-      </article>
+      <section class="player-view">
+        <article class="player-data name" style="float: left;">
+          <span class="label"></span>
+          <span class="value"></span>
+        </article>
+        <article class="player-data gender" style="float: left;">
+          <span class="label"> </span>
+          &nbsp;(<span class="value"></span>)
+        </article>
+        <br style="clear: both;" />
+        <article class="player-data confidence">
+          <span class="label">confidence: </span>
+          <span class="value"></span>
+        </article>
+        <article class="player-data hope">
+          <span class="label">hope: </span>
+          <span class="value"></span>
+        </article>
+        <article class="player-data sanity">
+          <span class="label">sanity: </span>
+          <span class="value"></span>
+        </article>
+        <article class="player-data satiation">
+          <span class="label">satiation: </span>
+          <span class="value"></span>
+        </article>
+        <article class="player-data hydration">
+          <span class="label">hydration: </span>
+          <span class="value"></span>
+        </article>
+        <article class="player-data vigor">
+          <span class="label">vigor: </span>
+          <span class="value"></span>
+        </article>
+      </section>
 
       <article class="group-view">
         <h1>group</h1>
@@ -50,7 +47,7 @@
       <article class="action-view">
         <h1>action</h1>
         <section class="action-message">
-          > i am alone, unfamiliar with my surroundings without any supplies &mdash; if i don't find help soon, i will become weak &mdash; i am now dependent on my mentality and physical well being
+          <span class="message-tick">></span> Wha... where am I? What happened? Hello? HELLO? I need to do something.
         </section>
         <br>
         <section class="action-options"></section>
@@ -59,6 +56,7 @@
     </section>
   </body>
 
+  <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="./styles/main.css">
   <script src="/socket.io/socket.io.js"></script>
   <script data-main="/config" src="/bower_components/requirejs/require.js"></script>
