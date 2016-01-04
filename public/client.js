@@ -2,7 +2,7 @@
 define(function (require) {
 
   $(document).ready(function () {
-    window.socket = io.connect('http://localhost');
+    window.socket = io.connect('http://localhost:3000');
 
     var ClientView = require('./views/client');
 
@@ -10,13 +10,11 @@ define(function (require) {
       el: $('.client')
     });
 
-
     window.socket.on('restart', function(){
     clientView = new ClientView({
         el: $('.client')
       });
     });
-
 
     window.socket.on('player joined party', function (otherPlayer) {
       console.log(otherPlayer);
