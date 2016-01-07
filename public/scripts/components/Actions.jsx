@@ -1,9 +1,12 @@
 import React from 'react';
 import Sample from 'lodash/collection/sample';
 import {Grid, Row, Col, Glyphicon, Button} from 'react-bootstrap';
+import Player from '../../lib/player'
+
+let player = Player.generate();
 
 const Actions = React.createClass({
-  render: function () {
+  render:  function() {
     return (
       <Grid>
         <Row>
