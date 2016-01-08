@@ -43,6 +43,7 @@ const Player = ({
 
 
 		this.profile.stats = StatBasis.baisAge(this.profile.age, this.profile.stats);
+		this.profile.stats = StatBasis.baisGender(this.profile.gender, this.profile.stats);
 
 		console.log('Your character', this.profile);
 	}
