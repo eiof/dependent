@@ -1,12 +1,18 @@
 import $ from 'jquery';
+import StatBasis from './statBais.js'
+import ForEach from 'lodash/collection/forEach';
 
 const Player = ({
+	options: {
+		userApiUrl: 'http://api.randomuser.me/'
+	},
+
 	profile: {
 		gender: 'male',
 		name: { 
-			first: 'Fallback', 
-			last: 'Character', 
-			title: 'Dr.'
+			first: 'bailey', 
+			last: 'duke', 
+			title: 'mr.'
 		},
 		age: Math.floor(Math.random() * 80) + 10,
 		stats: {
@@ -21,18 +27,24 @@ const Player = ({
 
 	generate: function(){
 		$.ajax({
-			url: 'http://api.randomuser.me/',
+			url: this.options.userApiUrl,
 			dataType: 'json'
 		}).success((data) => {
 			this.processRandomUser(data.results[0].user);
+		}).error((data) =>{
+			console.log('Warning! Failed to generate random user data from api, reverting to back up.', data);
 		});
 	},
 
 	processRandomUser: function(userData){
-		this.profile.name = userData.name;
+		ForEach(['name', 'picture', 'gender'], (key)=>{
+			this.profile[key] = userData[key];
+ 		});
 
-		console.log('character', this.profile);
 
+		this.profile.stats = StatBasis.baisAge(this.profile.age, this.profile.stats);
+
+		console.log('Your character', this.profile);
 	}
 });
 
