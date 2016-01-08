@@ -27,7 +27,7 @@ const Player = ({
 		items: {
 			backpack: {
 				maxSize: 24,
-				contents: []
+				contents: {}
 			},
 			person: {
 				head: null,

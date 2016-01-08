@@ -21,7 +21,7 @@ const Item = ({
 	},
 
 	fillStarterBackpack: function(){
-		const backpack = [];
+		const backpack = {};
 
 		const items = {
 			food: ['apple', 'corn', 'smallJerky'],
@@ -29,11 +29,8 @@ const Item = ({
 		};
 
 		ForEach(items, (obj, key)=>{
-			ForEach(obj, (object, itemName)=>{
-				let newObj = {};
-				newObj[ItemSet[key][itemName]] = object;
-				
-				backpack.push(newObj);
+			ForEach(obj, (object)=>{
+				backpack[object] = ItemSet[key][object];
 			});
 		});
 
