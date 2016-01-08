@@ -1,10 +1,14 @@
 import $ from 'jquery';
 
-var Player = ({
+const Player = ({
 	profile: {
 		gender: 'male',
-		name: { first: 'Fallback', last: 'Character', title: 'Dr.'},
-		age: Math.floor(Math.random() * 80) + 10  ,
+		name: { 
+			first: 'Fallback', 
+			last: 'Character', 
+			title: 'Dr.'
+		},
+		age: Math.floor(Math.random() * 80) + 10,
 		stats: {
 			confidence: 50,
 			hope: 50,
