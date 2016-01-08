@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import StatBasis from './statBais.js'
+import Item from './item.js'
 import ForEach from 'lodash/collection/forEach';
 
 const Player = ({
@@ -22,6 +23,22 @@ const Player = ({
 			satiation: 50,
 			hydration: 50,
 			vigor: 50
+		},
+		items: {
+			backpack: {
+				maxSize: 24,
+				contents: []
+			},
+			person: {
+				head: null,
+				torso: null,
+				legs: null,
+				feet: null,
+				hands: {
+					left: null,
+					right: null
+				},
+			}
 		}
 	},
 
@@ -42,8 +59,8 @@ const Player = ({
  		});
 
 
-		this.profile.stats = StatBasis.baisAge(this.profile.age, this.profile.stats);
-		this.profile.stats = StatBasis.baisGender(this.profile.gender, this.profile.stats);
+		this.profile.stats = StatBasis.processStatBais(this.profile.age, this.profile.gender, this.profile.stats);
+		this.profile.items = Item.generateStarterSet(this.profile.items);
 
 		console.log('Your character', this.profile);
 	}

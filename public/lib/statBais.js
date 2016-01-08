@@ -30,27 +30,31 @@ const StatBaisModel = {
 	]
 };
 
-let newStatObj = { vigor: 0, hope: 0, confidence: 0, sanity: 0};
 
 const StatBais = ({
+	newStatObj: { vigor: 0, hope: 0, confidence: 0, sanity: 0 },
+
+	processStatBais: function(age, gender, stats){
+		this.baisAge(age, stats);
+		this.baisGender(gender, stats);
+
+		return this.newStatObj;
+	},
+
 	baisAge: function(age, stats){
 		ForEach(StatBaisModel.age, (ageGroup) => {
 			if(ageGroup.min <= age && ageGroup.max >= age){
-				newStatObj = this.baisManipulation(stats, ageGroup.stats);
+				this.newStatObj = this.baisManipulation(stats, ageGroup.stats);
 			}
 		});
-
-		return newStatObj;
 	},
 
 	baisGender: function(gender, stats){
 		ForEach(StatBaisModel.gender, (genderGroup, key) => {
 			if(key == gender){
-				newStatObj = this.baisManipulation(stats, genderGroup);
+				this.newStatObj = this.baisManipulation(stats, genderGroup);
 			}
 		});
-
-		return newStatObj;
 	},
 
 	baisManipulation: function(stats, alterStatObj){
