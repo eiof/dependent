@@ -1,23 +1,28 @@
 import React from 'react';
-import Sample from 'lodash/collection/sample';
-import {Grid, Row, Col, Glyphicon, Button} from 'react-bootstrap';
-import Player from '../../lib/player'
+import sample from 'lodash/collection/sample';
+import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
+import Player from '../../lib/player';
 
 let player = Player.generate();
 
-const Actions = React.createClass({
-  render:  function() {
+class Actions extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
       <Grid>
         <Row>
           <Col xs={12}>
-            <span><Glyphicon glyph="comment" /> {Sample(this.props.messages)}</span>
+            <span><Glyphicon glyph="comment" />{sample(this.props.messages)}</span>
           </Col>
         </Row>
       </Grid>
     );
   }
-});
+}
 
 Actions.propTypes = {
   messages: React.PropTypes.array

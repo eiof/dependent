@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-var Player = ({
+const Player = ({
 	profile: {
 		gender: 'male',
 		name: { first: 'Fallback', last: 'Character', title: 'Dr.'},
