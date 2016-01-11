@@ -8,6 +8,7 @@ const Player = ({
 		userApiUrl: 'http://api.randomuser.me/'
 	},
 	profile: {
+		loaded: false,
 		gender: 'male',
 		name: {
 			first: 'bailey',
@@ -41,12 +42,17 @@ const Player = ({
 		}
 	},
 
-	generate: function(){
+	generate: function(parent){
+		this.options.processingNewPlayer = true;
+
 		$.ajax({
 			url: this.options.userApiUrl,
-			dataType: 'json'
+			dataType: 'json',
+			async: true
 		}).success((data) => {
 			this.processRandomUser(data.results[0].user);
+			this.profile.loaded = true;
+			parent.setState({player: this.profile});
 		}).error((data) =>{
 			console.log('Warning! Failed to generate random user data from api, reverting to back up.', data);
 		});
@@ -57,11 +63,8 @@ const Player = ({
 			this.profile[key] = userData[key];
  		});
 
-
 		this.profile.stats = StatBasis.processStatBais(this.profile.age, this.profile.gender, this.profile.stats);
 		this.profile.items = Item.generateStarterSet(this.profile.items);
-
-		console.log('Your character', this.profile);
 	}
 });
 

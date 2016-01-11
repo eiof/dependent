@@ -2,23 +2,19 @@ import React from 'react';
 import sample from 'lodash/collection/sample';
 import { Grid, Row, Col, Panel, Glyphicon } from 'react-bootstrap';
 import Player from '../../lib/player';
+import PlayerPanel from './PlayerPanel';
 
 class Actions extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      player: {
-        name: {
-          first: 'John',
-          last: 'Snow'
-        }
-      }
+      player: { loaded:  false }
     };
   }
 
-  componentWillMount() {
-    this.setState({ player: Player.generate() });
+  componentDidMount() {
+    this.setState({ player: Player.generate(this) });
   }
 
   render() {
@@ -27,15 +23,19 @@ class Actions extends React.Component {
         <Row>
           <Col xs={12}>
             <Panel>
-              <h4>{this.state.player.name.first} {this.state.player.name.last}</h4>
+              <span><Glyphicon glyph="comment" />{sample(this.props.messages)}</span>
             </Panel>
           </Col>
         </Row>
         <Row>
-          <Col xs={12}>
-            <Panel>
-              <span><Glyphicon glyph="comment" />{sample(this.props.messages)}</span>
-            </Panel>
+          <Col xs={3}>
+            <PlayerPanel player={this.state.player} />
+          </Col>
+          <Col xs={6}>
+            TAB + INVENTORY
+          </Col>
+          <Col xs={3}>
+            BUFF / DEBUFF / HISTORY
           </Col>
         </Row>
       </Grid>
