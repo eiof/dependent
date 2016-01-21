@@ -64,7 +64,7 @@ const Player = ({
  		});
 
 		this.profile.stats = StatBasis.processStatBais(this.profile.age, this.profile.gender, this.profile.stats);
-		this.profile.items = Item.generateStarterSet(this.profile.items);
+		// this.profile.items = Item.generateStarterSet(this.profile.items);
 	}
 });
 

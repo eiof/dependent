@@ -1,41 +1,17 @@
-import $ from 'jquery';
-import ForEach from 'lodash/collection/forEach';
+import sample from 'lodash/collection/sample';
 
-const ItemSet = {
-	food: {
-		apple: { size: 1, stats: { satiation: +5, hydration: +1, hope: +1 } },
-		corn: { size: 1, stats: { satiation: +10 } },
-		smallJerky: { size: 1, stats: {satiation: +20, hydration: -5, hope: +3 } }
-	},
-	water: {
-		canteen: { size: 2, stats: { hydration:  +20, hope: +3 } },
-		bottle: { size: 1, stats: { hydration:  +10, hope: +1 } },
-	}
-};
+const ItemSet = [
+	{ name: 'apple', type: 'food', size: 1, stats: { satiation: 5, hydration: 1, hope: 1 } },
+	{ name: 'corn', type: 'food', size: 1, stats: { satiation: 10 } },
+	{ name: 'small jerky', type: 'food', size: 1, stats: { satiation: 20, hydration: -5, hope: 3 } },
+  { name: 'canteen', type: 'water', size: 2, stats: { hydration: 20, hope: 3 } },
+  { name: 'bottle', type: 'water', size: 1, stats: { hydration: 10, hope: 1 } }
+];
 
 const Item = ({
-	generateStarterSet: function(playerItemObj){
-		playerItemObj.backpack.contents = this.fillStarterBackpack();
-
-		return playerItemObj;
-	},
-
-	fillStarterBackpack: function(){
-		const backpack = {};
-
-		const items = {
-			food: ['apple', 'corn', 'smallJerky'],
-			water: ['canteen', 'bottle']
-		};
-
-		ForEach(items, (obj, key)=>{
-			ForEach(obj, (object)=>{
-				backpack[object] = ItemSet[key][object];
-			});
-		});
-
-		return backpack;
-	}
+  generateStarterPack: () => {
+    return sample(ItemSet, 3);
+  }
 });
 
 export default Item;

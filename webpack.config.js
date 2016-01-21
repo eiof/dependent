@@ -26,7 +26,7 @@ module.exports = {
       //   loaders: ["style", "css", "sass"]
       // },
       {
-        test: /\.(html|eot|svg|ttf|woff|woff2|css)$/i,
+        test: /\.(html|css)$/i,
         exclude: /public\/images/,
         loader: 'file?name=[name].[ext]'
       },

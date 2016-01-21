@@ -3,13 +3,14 @@ import sample from 'lodash/collection/sample';
 import { Grid, Row, Col, Panel, Glyphicon } from 'react-bootstrap';
 import Player from '../../lib/player';
 import PlayerPanel from './PlayerPanel';
+import Inventory from './Inventory';
 
 class Actions extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      player: { loaded:  false }
+      player: { loaded: false }
     };
   }
 
@@ -32,7 +33,7 @@ class Actions extends React.Component {
             <PlayerPanel player={this.state.player} />
           </Col>
           <Col xs={6}>
-            TAB + INVENTORY
+            <Inventory />
           </Col>
           <Col xs={3}>
             BUFF / DEBUFF / HISTORY
